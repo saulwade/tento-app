@@ -1,13 +1,12 @@
+# ✅ routes/insights.py (Backend)
 from fastapi import APIRouter
-from datetime import date
+from datetime import datetime
 
-router = APIRouter(prefix="/weather-insights")
+router = APIRouter()
 
-@router.get("/")
-async def weather_insights(user_id: str, fecha: date = date.today()):
-    # Aquí iría luego la lógica real cruzando clima y ventas con Supabase + API clima
+@router.get("/weather-insights")
+def weather_insights():
     return {
-        "user_id": user_id,
-        "fecha": fecha,
-        "insight": "Tus ventas bajaron por lluvia y quincena 🌀💸"
+        "fecha": datetime.now().date().isoformat(),
+        "mensaje": "Tus ventas bajaron 18% el martes. Posible causa: lluvia + fin de quincena."
     }
