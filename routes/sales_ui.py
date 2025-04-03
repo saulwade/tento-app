@@ -4,18 +4,27 @@ def sales() -> rx.Component:
     return rx.container(
         rx.vstack(
             rx.heading("Ventas"),
-            rx.text("Consulta tu historial de ventas"),
+            rx.text("Visualiza tus ventas diarias y semanales"),
             rx.divider(),
 
-            rx.table(
-                headers=["Fecha", "Canal", "Total"],
-                rows=[
-                    ["2025-03-01", "Rappi", "$480"],
-                    ["2025-03-02", "Uber", "$690"],
-                    ["2025-03-03", "Local", "$1,100"]
+            rx.data_table(
+                data=[
+                    {"Fecha": "2024-03-30", "Total": "$1,250", "Canal": "Web"},
+                    {"Fecha": "2024-03-31", "Total": "$980", "Canal": "Rappi"},
+                    {"Fecha": "2024-04-01", "Total": "$1,430", "Canal": "Uber"},
                 ],
-                border=True,
+                columns=[
+                    {"header": "Fecha", "accessor_key": "Fecha"},
+                    {"header": "Total", "accessor_key": "Total"},
+                    {"header": "Canal", "accessor_key": "Canal"},
+                ],
+                pagination=True,
+                search=True,
+                sort=True,
             ),
+
+            rx.button("Subir archivo de ventas (.xlsx)", variant="outline"),
+            rx.button("Explicar variación", variant="solid", color_scheme="blue"),
         ),
         padding="4",
     )

@@ -4,7 +4,7 @@ from state import TentoState
 def dashboard() -> rx.Component:
     return rx.container(
         rx.vstack(
-            rx.heading("Dashboard"),
+            rx.heading("Dashboard", size="5"),
             rx.text(f"Bienvenido, {TentoState.usuario}"),
 
             rx.hstack(

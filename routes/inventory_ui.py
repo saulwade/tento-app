@@ -7,14 +7,21 @@ def inventory() -> rx.Component:
             rx.text("Carga, visualiza y edita tus productos"),
             rx.divider(),
 
-            rx.table(
-                headers=["Producto", "Unidad", "Cantidad", "Precio"],
-                rows=[
-                    ["Queso Oaxaca", "kg", "5", "$120"],
-                    ["Tortillas", "kg", "10", "$18"],
-                    ["Carne Asada", "kg", "7", "$185"]
+            rx.data_table(
+                data=[
+                    {"Producto": "Queso Oaxaca", "Unidad": "kg", "Cantidad": "5", "Precio": "$120"},
+                    {"Producto": "Tortillas", "Unidad": "kg", "Cantidad": "10", "Precio": "$18"},
+                    {"Producto": "Carne Asada", "Unidad": "kg", "Cantidad": "7", "Precio": "$185"},
                 ],
-                border=True,
+                columns=[
+                    {"header": "Producto", "accessor_key": "Producto"},
+                    {"header": "Unidad", "accessor_key": "Unidad"},
+                    {"header": "Cantidad", "accessor_key": "Cantidad"},
+                    {"header": "Precio", "accessor_key": "Precio"},
+                ],
+                pagination=True,
+                search=True,
+                sort=True,
             ),
 
             rx.button("Subir archivo Excel (.xlsx)", variant="outline"),

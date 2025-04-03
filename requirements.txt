@@ -6,3 +6,5 @@ httpx
 requests
 sqlmodel
 postgrest-py
+
+reflex==0.7.5

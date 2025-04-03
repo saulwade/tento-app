@@ -4,18 +4,20 @@ def alerts() -> rx.Component:
     return rx.container(
         rx.vstack(
             rx.heading("Alertas del Sistema"),
-            rx.text("Alertas detectadas por IA y reglas de negocio"),
+            rx.text("Aquí puedes ver las alertas generadas automáticamente por Tento."),
             rx.divider(),
 
-            rx.table(
-                headers=["Tipo", "Mensaje", "Fecha"],
-                rows=[
-                    ["Margen", "Platillo X bajó 15% su rentabilidad", "2025-03-29"],
-                    ["Stock", "Te queda poco de Queso Oaxaca", "2025-03-30"],
-                    ["Clima", "Lluvia coincidió con baja de ventas", "2025-03-31"]
+            rx.data_table(
+                data=[
+                    {"Tipo": "Merma", "Mensaje": "Queso Oaxaca bajó sin ventas", "Gravedad": "Media"},
+                    {"Tipo": "Precio Alto", "Mensaje": "Carne subió 25% esta semana", "Gravedad": "Alta"},
+                    {"Tipo": "Bajo Margen", "Mensaje": "Torta de Jamón bajó a 18% de utilidad", "Gravedad": "Alta"},
                 ],
-                border=True,
-            ),
+                columns=["Tipo", "Mensaje", "Gravedad"],
+                search=True,
+                sort=True,
+                pagination=True,
+            )
         ),
         padding="4",
     )
